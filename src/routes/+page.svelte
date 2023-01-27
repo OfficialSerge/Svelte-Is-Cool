@@ -162,7 +162,8 @@
     z-index: 1;
     padding: 5rem;
     border: none;
-    font: 2rem solid black;
+    font: 2rem solid;
+    color: red;
   }
 
   button:active {

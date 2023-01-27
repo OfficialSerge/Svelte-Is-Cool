@@ -6,12 +6,10 @@
     "framework": "none",
     "config": {
       "SourceDir": "src",
-      "DistributionDir": "dist",
+      "DistributionDir": "build",
       "BuildCommand": "npm run build",
       "StartCommand": "npm run preview"
     }
   },
-  "providers": [
-    "awscloudformation"
-  ]
+  "providers": ["awscloudformation"]
 }
