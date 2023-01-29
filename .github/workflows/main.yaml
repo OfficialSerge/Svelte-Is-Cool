@@ -2,7 +2,7 @@
 name: Build and Deploy Svelte App to CloudFront
 on:
   push:
-    branches: [master]
+    branches: [main]
 
 permissions:
   id-token: write # This is required for requesting the JWT
