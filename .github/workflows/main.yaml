@@ -1,0 +1,51 @@
+---
+name: Build and Deploy Svelte App to CloudFront
+on:
+  push:
+    branches: [master]
+
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read # This is required for actions/checkout
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    env:
+      BUCKET: myapp-blue
+      DIST: build
+      REGION: us-east-1
+      DIST_ID: E3DDU3IC7XB7KY
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::694826974343:role/github-actions-myapp
+          role-session-name: myappupdater
+          aws-region: ${{ env.REGION }}
+
+      # - uses: actions/setup-node@v2
+      #   with:
+      #     node-version: '14'
+
+      - name: Install Dependencies
+        run: |
+          node --version
+          npm ci --production
+
+      - name: Build Static Website
+        run: npm run build
+
+      - name: Copy files to the production website with the AWS CLI
+        run: |
+          aws s3 sync --delete ${{ env.DIST }} s3://${{ env.BUCKET }}
+
+      - name: Copy files to the production website with the AWS CLI
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ env.DIST_ID }} \
+            --paths "/*"
