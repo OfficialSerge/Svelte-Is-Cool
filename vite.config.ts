@@ -3,7 +3,6 @@ import type { UserConfig } from "vite";
 
 const config: UserConfig = {
   plugins: [sveltekit()],
-  base: "./",
   test: {
     include: ["src/**/*.{test,spec}.{js,ts}"],
   },
