@@ -163,6 +163,7 @@
     padding: 5rem;
     border: none;
     font-size: 2rem;
+    color: red;
   }
 
   button:active {
