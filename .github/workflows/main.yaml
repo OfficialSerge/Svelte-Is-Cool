@@ -44,7 +44,7 @@ jobs:
       - name: Copy files to the production website with the AWS CLI
         run: |
           # push to either bucket depending on the branch we're on
-          aws s3 sync --delete ${{ env.DIST }} s3://${{ (github.ref == 'refs/heads/main' ? env.BLUE_BUCKET : env.GREEN_BUCKET) }}
+          aws s3 sync --delete ${{ env.DIST }} s3://${{ github.ref == 'refs/heads/main' ? env.BLUE_BUCKET : env.GREEN_BUCKET }}
 
       - name: Copy files to the production website with the AWS CLI
         run: |
