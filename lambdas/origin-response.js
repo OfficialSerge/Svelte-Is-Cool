@@ -37,6 +37,9 @@ export function handler(event, context, callback) {
 
 // Add set-cookie header
 function setCacheBehavior(response, cookie) {
+  const cacheBehavior = `${cookie}; Path="/"`;
   console.log(`Cache behavior based off of cookie ${cookie}`);
-  response.headers["set-cookie"] = [{ key: "Set-Cookie", value: cookie }];
+  response.headers["set-cookie"] = [
+    { key: "Set-Cookie", value: cacheBehavior },
+  ];
 }
