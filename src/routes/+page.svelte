@@ -155,7 +155,7 @@
 	<SC.PerspectiveCamera fov={34} position={[0.35, 0.43, 0.44]} />
 </SC.Canvas>
 
-<button on:click={isToggled == true ? blueToRed : redToBlue}>flip.</button>
+<button on:click={isToggled == true ? blueToRed : redToBlue}>Flip.</button>
 
 <style>
   button {
@@ -163,7 +163,8 @@
     padding: 5rem;
     border: none;
     font-size: 2rem;
-    color: red;
+    font-weight: 900;
+    color: #4545f7;
   }
 
   button:active {
