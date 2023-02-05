@@ -2,7 +2,7 @@
 
 // define source cookie headers
 const sourceMainCookie = "X-Source=main";
-const sourceExperimentCookie = "X-Source=experiment";
+const sourceTestCookie = "X-Source=test";
 
 // define response handler
 export function handler(event, context, callback) {
@@ -15,9 +15,9 @@ export function handler(event, context, callback) {
   if (requestHeaders.cookie) {
     for (let i = 0; i < requestHeaders.cookie.length; i++) {
       // ...ugly but simple enough for now
-      if (requestHeaders.cookie[i].value.indexOf(sourceExperimentCookie) >= 0) {
+      if (requestHeaders.cookie[i].value.indexOf(sourceTestCookie) >= 0) {
         console.log("Experiment Source cookie found");
-        setCacheBehavior(response, sourceExperimentCookie);
+        setCacheBehavior(response, sourceTestCookie);
         callback(null, response);
         return;
       }

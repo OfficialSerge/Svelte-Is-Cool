@@ -2,10 +2,10 @@
 
 // define source cookie headers
 const sourceMainCookie = "X-Source=main";
-const sourceExperimentCookie = "X-Source=experiment";
+const sourceTestCookie = "X-Source=test";
 
 // test bucket domain information for requesting origin
-const experimentBucketDomain = "myapp-green.s3.us-east-1.amazonaws.com";
+const experimentBucketDomain = "myorigin-test.s3.us-east-1.amazonaws.com";
 const experimentBucketRegion = "us-east-1";
 
 // origin request handler
@@ -16,7 +16,7 @@ export function handler(event, context, callback) {
   const source = decideSource(headers);
 
   // if source is test, route request to test
-  if (source === sourceExperimentCookie) {
+  if (source === sourceTestCookie) {
     console.log("Setting Origin to experiment bucket");
     // Specify Origin
     request.origin = {
@@ -44,9 +44,9 @@ function decideSource(headers) {
   if (headers.cookie) {
     // ...ugly but simple enough for now
     for (let i = 0; i < headers.cookie.length; i++) {
-      if (headers.cookie[i].value.indexOf(sourceExperimentCookie) >= 0) {
+      if (headers.cookie[i].value.indexOf(sourceTestCookie) >= 0) {
         console.log("Experiment Source cookie found");
-        return sourceExperimentCookie;
+        return sourceTestCookie;
       }
       if (headers.cookie[i].value.indexOf(sourceMainCookie) >= 0) {
         console.log("Main Source cookie found");
