@@ -164,7 +164,7 @@
     border: none;
     font-size: 2rem;
     font-weight: 900;
-    color: #3ca23e;
+    color: #3c42af;
   }
 
   button:active {
