@@ -12,7 +12,7 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     env:
-      BUCKET: ${{ github.ref == 'refs/heads/main' && 'myapp-blue' || 'myapp-green' }}
+      BUCKET: ${{ github.ref == 'refs/heads/main' && 'myorigin-main' || 'myorigin-test' }}
       DIST: build
       REGION: us-east-1
       DIST_ID: E1SMN05OUFXDF7
@@ -24,7 +24,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::694826974343:role/github-actions-myapp
+          role-to-assume: arn:aws:iam::694826974343:role/GithubActionsRole
           role-session-name: myappupdater
           aws-region: ${{ env.REGION }}
 
