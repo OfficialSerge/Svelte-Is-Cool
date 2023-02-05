@@ -2,7 +2,7 @@
 
 A CloudFront distribution serving _main_ and _test_ versions of a static website.
 
-![This is an image](https://github.com/OfficialSerge/Svelte-Is-Cool.git/imgs/deployment.png)
+![This is an image](imgs/deployment.png)
 
 Under the hood:
 
