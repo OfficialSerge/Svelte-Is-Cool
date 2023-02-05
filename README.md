@@ -1,5 +1,7 @@
 # CloudFront + Svelte
 
+[Project Link](https://day0343nsogx7.cloudfront.net)
+
 A CloudFront distribution serving _main_ and _test_ versions of a static website.
 
 ![This is an image](imgs/deployment.png)
@@ -30,3 +32,9 @@ Under the hood:
 - A center button can be clicked to animate the background, makes use of Bezier Curve function to ease-in transition.
 - Main version of site has blue font, test version has green font. You can manually set the cookie value to switch between versions.
 - Github Actions workflow builds assets, uploads to S3, and invalidates CloudFront Cache so user requests always see latest version.
+
+## Related
+
+Some resources I found instrumental in helping with this project
+
+[Lorenzo Nicora](https://dev.to/jimmydqv/cloudfront-deployments-with-lambda-edge-4jmh), [DevOps By Example](https://antonputra.com/amazon/deploy-react-to-s3-and-cloudfront/)
