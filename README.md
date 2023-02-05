@@ -37,4 +37,4 @@ Under the hood:
 
 Some resources I found instrumental in helping with this project
 
-[ Github Actions workflow builds assets, uploads to S3, and invalidates CloudFront Cache so user requests always see latest version.
+[Lorenzo Nicora](https://dev.to/jimmydqv/cloudfront-deployments-with-lambda-edge-4jmh), [DevOps By Example](https://antonputra.com/amazon/deploy-react-to-s3-and-cloudfront/)
