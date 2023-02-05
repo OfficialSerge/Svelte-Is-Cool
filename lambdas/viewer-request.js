@@ -2,7 +2,7 @@
 
 // define source cookie headers
 const sourceMainCookie = "X-Source=main";
-const sourceExperimentCookie = "X-Source=experiment";
+const sourceTestCookie = "X-Source=test";
 
 // a value used to split traffic between
 // different versions of the site
@@ -27,7 +27,7 @@ export async function handler(event, context, callback) {
         callback(null, request);
         return;
       }
-      if (headers.cookie[i].value.indexOf(sourceExperimentCookie) >= 0) {
+      if (headers.cookie[i].value.indexOf(sourceTestCookie) >= 0) {
         console.log("found source cookie, forwarding request as is");
         callback(null, request);
         return;
@@ -38,9 +38,7 @@ export async function handler(event, context, callback) {
   // case for no cookie, okay we need to generate a new cookie and uri
   console.log("source cookie has not been found. throwing dice...");
   const cookie =
-    Math.random() < experimenttraffic
-      ? sourceExperimentCookie
-      : sourceMainCookie;
+    Math.random() < experimenttraffic ? sourceTestCookie : sourceMainCookie;
 
   console.log(`cookie: ${cookie}`);
 
