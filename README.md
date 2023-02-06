@@ -10,7 +10,7 @@ Under the hood:
 
 1. Users make requests that are intercepted by the viewer request lambda. If the request contains our session cookie we forward the request to CloudFront, otherwise we randomly assign a cookie value of _main_ or _test_ in order to split site traffic.
 
-2. Requests are cache hits if the site version cooresponding to the cookie is stored in CloudFront, in this case the site is promptly returned to the user. If CloudFront doesn't have the requested site version cached, it will trigger an origin request.
+2. Requests are cache hits if the site version corresponding to the cookie is stored in CloudFront, in this case the site is promptly returned to the user. If CloudFront doesn't have the requested site version cached, it will trigger an origin request.
 
 3. The origin request lambda checks the value of our cookie and based off of it will request one of our two origins (either _main_ or _test_). For this example each version of the site will get its own S3 bucket (recommended by AWS).
 
